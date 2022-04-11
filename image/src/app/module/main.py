@@ -5,6 +5,7 @@ Mostly only this file requires changes
 
 import paho.mqtt.client as mqtt
 import time
+import json
 
 from app.config import APPLICATION
 
@@ -53,7 +54,7 @@ def module_main(data):
                 return_body.append(processData(data))
 
         # publish data to a remote MQTT broker
-        client.publish(topic=APPLICATION['TOPIC'], payload=return_body, qos=APPLICATION['QOS'])
+        client.publish(topic=APPLICATION['TOPIC'], payload=json.dumps(return_body), qos=APPLICATION['QOS'])
 
         return data, None
     except Exception:
