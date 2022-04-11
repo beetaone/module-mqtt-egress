@@ -1,0 +1,67 @@
+version: 1.0.0
+name: MQTT Egress
+description: Send data to a remote MQTT broker.
+icon: https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_mqtt_output.png
+type: output
+tags:
+  - MQTT Egress
+  - output
+  - Data
+  - egress
+  - MQTT
+categories:
+  - id: category
+    name: Egress
+image:
+  name: weevenetwork/weeve-egress-mqtt
+  tag: latest
+environments:
+  - key: MQTT_BROKER
+    description: Broker to publish to.
+    value: ''
+    default: mqtt://test.mosquitto.org
+    type: string
+    name: MQTT Broker
+  - key: PORT
+    description: Port on which the broker is listening.
+    value: ''
+    default: 1883
+    type: integer
+    name: Port
+  - key: TOPIC
+    description: Topic to publish.
+    value: ''
+    default: weeve/factory
+    type: string
+    name: Topic
+  - key: QOS
+    description: Quality of service for the connection.
+    value: ''
+    default: '0'
+    type: enum
+    options:
+      - 0
+      - 1
+      - 2
+    name: QOS
+  - key: LABELS
+    description: List of comma (,) separated labels to read from a previous module. Leave empty ("") to keep all data.
+    value: ''
+    default: temperature, pressure
+    type: string
+    name: Input Labels
+  - key: TIMESTAMP
+    description: Label for timestamp field for incoming data. If left empty, this module will add the timestamp.
+    value: ''
+    default: 2 Aug 2021
+    type: string
+    name: Timestamp Field
+commands: []
+document:
+  ports: []
+  volumes: []
+  restart_policy:
+    condition: on-failure
+    delay: 10s
+    max_attempts: 3
+    window: 120s
