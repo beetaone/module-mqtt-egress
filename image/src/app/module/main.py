@@ -4,7 +4,6 @@ Mostly only this file requires changes
 """
 
 import paho.mqtt.client as mqtt
-import time
 import json
 
 from app.config import APPLICATION
@@ -70,17 +69,4 @@ def processData(parsed_data):
     else:
         return_body = parsed_data
 
-    # add timestamp
-    if not APPLICATION['TIMESTAMP']:
-        return_body['timestamp'] = time.time()
-    else:
-        return_body = removekey(return_body, APPLICATION['TIMESTAMP'])
-        return_body['timestamp'] = parsed_data[APPLICATION['TIMESTAMP']]
     return return_body
-
-def removekey(d, key):
-    r = dict(d)
-    if not key in d:
-        return r
-    del r[key]
-    return r

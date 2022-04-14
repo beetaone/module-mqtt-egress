@@ -13,6 +13,5 @@ services:
       TOPIC: weeve/factory
       QOS: 0
       LABELS:
-      TIMESTAMP:
     ports:
       - 5000:80

@@ -10,5 +10,4 @@ APPLICATION = {
     "TOPIC": env("TOPIC", "weeve/factory"),
     "QOS": intenv("QOS", 0),
     "LABELS": env("LABELS", ""),
-    "TIMESTAMP": env("TIMESTAMP", "")
 }

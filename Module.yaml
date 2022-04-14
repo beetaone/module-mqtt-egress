@@ -50,12 +50,6 @@ environments:
     default: temperature, pressure
     type: string
     name: Input Labels
-  - key: TIMESTAMP
-    description: Label for timestamp field for incoming data. If left empty, this module will add the timestamp.
-    value: ''
-    default: 2 Aug 2021
-    type: string
-    name: Timestamp Field
 commands: []
 document:
   ports: []
