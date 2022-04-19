@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 MODULE=weevenetwork/weeve-egress-mqtt
+
 create_image:
 	docker build -t ${MODULE} . -f image/Dockerfile
 .phony: create_image
