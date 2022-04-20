@@ -103,7 +103,7 @@ Example:
 
 ## Output
 
-Output to this module is identical JSON body as input that is sent to a chosen endpoint.
+Output of this module is identical JSON body as input that is sent to a chosen endpoint.
 
 Example:
 
