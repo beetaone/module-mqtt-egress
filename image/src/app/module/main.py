@@ -53,9 +53,15 @@ def module_main(data):
                 return_body.append(processData(data))
 
         # publish data to a remote MQTT broker
-        client.publish(topic=APPLICATION['TOPIC'], payload=json.dumps(return_body), qos=APPLICATION['QOS'])
+        result = client.publish(topic=APPLICATION['TOPIC'], payload=json.dumps(return_body), qos=APPLICATION['QOS'])
 
-        return data, None
+        # result: [0, 1]
+        if result[0] == 0:
+            # successful publishing
+            return data, None
+        else:
+            return None, "Failed to send message to MQTT topic."
+
     except Exception:
         return None, "Unable to perform the module logic"
 
