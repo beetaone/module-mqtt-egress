@@ -11,27 +11,19 @@ from app.config import APPLICATION
 # create MQTT client
 client = mqtt.Client()
 
+# connect the client to a remote MQTT broker
+try:
+    print("Connecting to MQTT... Broker: %s Port: %s", APPLICATION["MQTT_BROKER"], APPLICATION["PORT"])
+    client.connect(host=APPLICATION['MQTT_BROKER'], port=APPLICATION['PORT'])
+    print("Successfully connected to MQTT Broker!")
+except Exception:
+    print("Error: Cannot establish connection to a remote MQTT broker. Check provided MQTT broker address or port.")
+
 # define labels for data egressed through MQTT
 if APPLICATION['LABELS']:
     LABELS = [label.strip() for label in APPLICATION['LABELS'].split(',')]
 else:
     LABELS = None
-
-def connect_client():
-    """
-    Connects to a remote MQTT broker.
-
-    Returns:
-        None: if successfully connected to MQTT broker.
-        Error: if connections fails.
-    """
-    try:
-        # connect the client to a remote MQTT broker
-        client.connect(host=APPLICATION['MQTT_BROKER'], port=APPLICATION['PORT'])
-
-        return None
-    except Exception:
-        return "Cannot establish connection to a remote MQTT broker. Check provided MQTT broker address or port."
 
 def module_main(data):
     """
@@ -49,8 +41,8 @@ def module_main(data):
             return_body = processData(data)
         else:
             return_body = []
-            for data in data:
-                return_body.append(processData(data))
+            for data_instance in data:
+                return_body.append(processData(data_instance))
 
         # publish data to a remote MQTT broker
         result = client.publish(topic=APPLICATION['TOPIC'], payload=json.dumps(return_body), qos=APPLICATION['QOS'])
