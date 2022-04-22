@@ -1,7 +1,6 @@
 """
 Validates data received by the module.
 """
-from app.config import APPLICATION
 
 allowed_data = [dict, list]
 
@@ -14,10 +13,7 @@ def data_validation(data):
     Returns:
         [str, str]: [data, error]
     """
-    try:
-        # check data format
-        if not type(data) in allowed_data:
-            return None, 'Invalid Input data'
-        return data, None
-    except Exception:
-        return None, 'Invalid INPUT_LABEL'
+    # check data format
+    if not type(data) in allowed_data:
+        return None, 'Invalid input data.'
+    return data, None

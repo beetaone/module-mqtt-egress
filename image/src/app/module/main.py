@@ -12,12 +12,9 @@ from app.config import APPLICATION
 client = mqtt.Client()
 
 # connect the client to a remote MQTT broker
-try:
-    print("Connecting to MQTT... Broker: %s Port: %s", APPLICATION["MQTT_BROKER"], APPLICATION["PORT"])
-    client.connect(host=APPLICATION['MQTT_BROKER'], port=APPLICATION['PORT'])
-    print("Successfully connected to MQTT Broker!")
-except Exception:
-    print("Error: Cannot establish connection to a remote MQTT broker. Check provided MQTT broker address or port.")
+print(f'Connecting to MQTT... Broker: {APPLICATION["MQTT_BROKER"]} Port: {APPLICATION["PORT"]}')
+client.connect(host=APPLICATION['MQTT_BROKER'], port=APPLICATION['PORT'])
+print('Successfully connected to MQTT Broker!')
 
 # define labels for data egressed through MQTT
 if APPLICATION['LABELS']:
@@ -45,17 +42,16 @@ def module_main(data):
                 return_body.append(processData(data_instance))
 
         # publish data to a remote MQTT broker
-        result = client.publish(topic=APPLICATION['TOPIC'], payload=json.dumps(return_body), qos=APPLICATION['QOS'])
+        (rc, _) = client.publish(topic=APPLICATION['TOPIC'], payload=json.dumps(return_body), qos=APPLICATION['QOS'])
 
-        # result: [0, 1]
-        if result[0] == 0:
+        if rc == 0:
             # successful publishing
             return data, None
         else:
-            return None, "Failed to send message to MQTT topic."
+            return None, 'Failed to send a message to MQTT topic.'
 
-    except Exception:
-        return None, "Unable to perform the module logic"
+    except Exception as e:
+        return None, f'Exception occurred in module logic (module_main): {str(e)}'
 
 def processData(parsed_data):
     return_body = {}

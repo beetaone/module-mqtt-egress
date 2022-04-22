@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     environment:
       MODULE_NAME: weeve-egress-mqtt
-      EGRESS_URL: https://hookb.in/r1YwjDyn7BHzWWJVK8Gq
+      EGRESS_URL: https://hookb.in/example
       INGRESS_PORT: 80
       MQTT_BROKER: mqtt://test.mosquitto.org
       PORT: 1883

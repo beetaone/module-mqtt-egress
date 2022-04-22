@@ -126,23 +126,3 @@ Example:
   },
 ];
 ```
-
-## Docker Compose Example
-
-```yml
-version: "3"
-services:
-  webhook:
-    image: weevenetwork/http-egress
-    environment:
-      MODULE_NAME: weeve-egress-mqtt
-      EGRESS_URL: https://hookb.in/r1YwjDyn7BHzWWJVK8Gq
-      INGRESS_PORT: 80
-      MQTT_BROKER: mqtt://test.mosquitto.org
-      PORT: 1883
-      TOPIC: weeve/factory
-      QOS: 0
-      LABELS: ""
-    ports:
-      - 5000:80
-```
