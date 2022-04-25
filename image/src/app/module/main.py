@@ -42,9 +42,9 @@ def module_main(data):
                 return_body.append(processData(data_instance))
 
         # publish data to a remote MQTT broker
-        (rc, _) = client.publish(topic=APPLICATION['TOPIC'], payload=json.dumps(return_body), qos=APPLICATION['QOS'])
+        rc, _ = client.publish(topic=APPLICATION['TOPIC'], payload=json.dumps(return_body), qos=APPLICATION['QOS'])
 
-        if rc == 0:
+        if rc == mqtt.MQTT_ERR_SUCCESS:
             # successful publishing
             return data, None
         else:
