@@ -1,11 +1,13 @@
 """
 All constants specific to the application
 """
-from app.utils.env import env
-
+import os
+from app.utils.intenv import intenv
 
 APPLICATION = {
-    "INPUT_LABEL": env("INPUT_LABEL", "temperature"),
-    "OUTPUT_LABEL": env("OUTPUT_LABEL", "temperature"),
-    "OUTPUT_UNIT": env("OUTPUT_UNIT", "Celsius"),
+    "MQTT_BROKER": os.getenv("MQTT_BROKER", "mqtt://test.mosquitto.org"),
+    "PORT": intenv("PORT", 1883),
+    "TOPIC": os.getenv("TOPIC", "weeve/factory"),
+    "QOS": intenv("QOS", 0),
+    "LABELS": os.getenv("LABELS", ""),
 }

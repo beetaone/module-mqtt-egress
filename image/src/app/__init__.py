@@ -11,7 +11,8 @@ log = getLogger(__name__)
 
 
 def create_app() -> Flask:
-    """ Configures the flask ap and returns it
+    """
+    Configures the flask app and returns it
 
     Returns:
         Flask: [Flask app]
@@ -23,7 +24,8 @@ def create_app() -> Flask:
 
 
 def set_routes(app: Flask):
-    """ Sets routs for the flask app
+    """
+    Sets routes for the flask app
 
     Args:
         app (Flask): [Flask]

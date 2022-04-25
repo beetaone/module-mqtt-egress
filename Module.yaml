@@ -1,38 +1,55 @@
 version: 1.0.0
-name: Python Egress Boilerplate
-description: Base module boilerplate for developers in Python.
-icon: https://icons-020-demo.s3.eu-central-1.amazonaws.com/Python.png
+name: MQTT Egress
+description: Send data to a remote MQTT broker.
+icon: https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_mqtt_output.png
 type: output
 tags:
-  - Boilerplate Egress
-  - Python
-  - Data
+  - MQTT Egress
   - output
+  - Data
+  - egress
+  - MQTT
 categories:
   - id: category
     name: Egress
 image:
-  name: weevenetwork/python-egress-module-boilerplate
+  name: weevenetwork/weeve-egress-mqtt
   tag: latest
 environments:
-  - key: INPUT_LABEL
-    description: The field to apply module logic on
+  - key: MQTT_BROKER
+    description: Broker to publish to.
     value: ''
-    default: temperature
+    default: mqtt://test.mosquitto.org
     type: string
-    name: Input Label
-  - key: OUTPUT_LABEL
-    description: Output label for data
+    name: MQTT Broker
+  - key: PORT
+    description: Port on which the broker is listening.
     value: ''
-    default: filteredTemp
-    type: string
-    name: Output Label
-  - key: OUTPUT_UNIT
-    description: Output unit for data
+    default: 1883
+    type: integer
+    name: Port
+  - key: TOPIC
+    description: Topic to publish.
     value: ''
-    default: Celsius
+    default: weeve/factory
     type: string
-    name: Output Unit
+    name: Topic
+  - key: QOS
+    description: Quality of service for the connection.
+    value: ''
+    default: '0'
+    type: enum
+    options:
+      - 0
+      - 1
+      - 2
+    name: QOS
+  - key: LABELS
+    description: List of comma (,) separated labels to read from a previous module. Leave empty ("") to keep all data.
+    value: ''
+    default: temperature, pressure
+    type: string
+    name: Input Labels
 commands: []
 document:
   ports: []
