@@ -5,7 +5,7 @@
 | ------------ | ----------------------------------------------------------------- |
 | name         | MQTT-Egress                                                       |
 | version      | v0.0.1                                                            |
-| docker image | [weevenetwork/weeve-egress-mqtt](https://hub.docker.com/r/weevenetwork/weeve-egress-mqtt)        |
+| docker image | [weevenetwork/mqtt-egress](https://hub.docker.com/r/weevenetwork/mqtt-egress)        |
 | tags         | Python, Flask, Docker, Weeve, MQTT, Egress                        |
 | authors      | Jakub Grzelak                                                     |
 
