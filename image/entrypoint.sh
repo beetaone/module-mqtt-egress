@@ -4,7 +4,7 @@
 # PIPESTATUS with a simple $?, but I don’t do that.
 set -o errexit -o pipefail -o noclobber -o nounset
 
-echo "Entrypoint script for weeve-egress-mqtt"
+echo "Entrypoint script for mqtt-egress"
 echo "Container args: $@"
 
 ########################

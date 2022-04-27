@@ -4,7 +4,7 @@ All constants specific to weeve
 import os
 
 WEEVE = {
-    "MODULE_NAME": os.getenv("MODULE_NAME", "weeve-egress-mqtt"),
+    "MODULE_NAME": os.getenv("MODULE_NAME", "mqtt-egress"),
     "MODULE_TYPE": os.getenv("MODULE_TYPE", "EGRESS"),
     "EGRESS_SCHEME": os.getenv("EGRESS_SCHEME", "http"),
     "EGRESS_HOST": os.getenv("EGRESS_HOST", "localhost"),

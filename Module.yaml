@@ -13,7 +13,7 @@ categories:
   - id: category
     name: Egress
 image:
-  name: weevenetwork/weeve-egress-mqtt
+  name: weevenetwork/mqtt-egress
   tag: latest
 environments:
   - key: MQTT_BROKER

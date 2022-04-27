@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-MODULE=weevenetwork/weeve-egress-mqtt
+MODULE=weevenetwork/mqtt-egress
 
 create_image:
 	docker build -t ${MODULE} . -f image/Dockerfile
