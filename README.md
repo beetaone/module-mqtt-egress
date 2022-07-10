@@ -4,7 +4,7 @@
 | -------------- | ------------------------------------- |
 | Name           | MQTT Egress                           |
 | Version        | v1.0.0                                |
-| DockerHub | [dockerhub-repo-name](https://hub.docker.com/r/dockerhub-repo-name) |
+| DockerHub | [weevenetwork/mqtt-egress](https://hub.docker.com/r/weevenetwork/mqtt-egress) |
 | authors        | Jakub Grzelak                    |
 
 - [MQTT Egress](#mqtt-egress)
