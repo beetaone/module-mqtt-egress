@@ -1,61 +1,47 @@
-version: 1.0.0
-name: MQTT Egress
-description: Send data to a remote MQTT broker.
-icon: https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_mqtt_output.png
-type: output
-tags:
-  - MQTT Egress
-  - output
-  - Data
-  - egress
-  - MQTT
-categories:
-  - id: category
-    name: Egress
+displayName: 'Module Boilerplate'       # Display name for the module that will be displayed in the UI.
+moduleName: 'module-boilerplate'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
+description: 'This is module boilerplate description.'       # Module description that will be displayed in the UI.
+versionName: 'v1.0.0'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
+isPublic: true                          # Boolean value that indicates if the module is Public or Private.
+categories:                             # Array of category that will be used to group the module in the UI.
+  - 'CATEGORY_1'
+  - 'CATEGORY_2'
+type: 'Output'      # Module type (Input, Processing, Output) that will be used to group the module in the UI.
 image:
-  name: weevenetwork/mqtt-egress
-  tag: latest
-environments:
-  - key: MQTT_BROKER
-    description: Broker to publish to.
+  name: 'weevenetwork/module-boilerplate'     # Image name from the docker registry.
+  tag: 'latest'                               # Image tag from the docker registry.
+  homepage: 'https://hub.docker.com/weevenetwork/module-boilerplate'      # Image homepage from the docker registry.
+repository: 'https://github.com/weeve-modules/python-egress-module-boilerplate'     # Repository URL to source code.
+envs:                                   # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
+  - name: Setting 1                   # name of the field to be displayed on the UI.
+    key: ENVIRONMENT_1                # key to set in the environment variables.
+    description: Module setting 1     # Description/helper text for the field.
+    value: ''                         # Value to be set in the environment variables.
+    type: 'select'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
+    options:                          # Options for the field if it is a select or multiple select. An array of string options
+      - option_A
+      - option_B
+      - option_C
+    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
+      - key:                          # key of the dependency
+        value:                        # value of the dependency
+  - name: Setting 2
+    key: ENVIRONMENT_2
+    description: Module setting 2
     value: ''
-    default: mqtt://test.mosquitto.org
-    type: string
-    name: MQTT Broker
-  - key: PORT
-    description: Port on which the broker is listening.
-    value: ''
-    default: 1883
-    type: integer
-    name: Port
-  - key: TOPIC
-    description: Topic to publish.
-    value: ''
-    default: weeve/factory
-    type: string
-    name: Topic
-  - key: QOS
-    description: Quality of service for the connection.
-    value: ''
-    default: '0'
-    type: enum
-    options:
-      - 0
-      - 1
-      - 2
-    name: QOS
-  - key: LABELS
-    description: List of comma (,) separated labels to read from a previous module. Leave empty ("") to keep all data.
-    value: ''
-    default: temperature, pressure
-    type: string
-    name: Input Labels
-commands: []
-document:
-  ports: []
-  volumes: []
-  restart_policy:
-    condition: on-failure
-    delay: 10s
-    max_attempts: 3
-    window: 120s
+    type: 'number'
+    dependencies:
+      - key: ENVIRONMENT_1
+        value: option_B
+ports:                                  # Array of ports that will be exposed by the module.
+  - container: 8080                     # Port number from the container.
+    host: 8080                          # Port number to map on the host.
+mounts:
+  - container: '/data'                  # Mount path from the container.
+    host: '/data'                       # Mount path to map on the host.
+tags:                                   # Array of tags.
+  - 'Python'
+  - 'Output'
+  - 'Boilerplate'
+  - 'Boilerplate 1.0.0'
+icon: 'https://some.url/to/icon.png'    # Icon URL that will be displayed in the UI.
