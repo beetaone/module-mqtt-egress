@@ -1,1 +1,3 @@
-bottle==0.12.21
+bottle
+requests
+paho-mqtt
