@@ -39,9 +39,9 @@ envs:                                   # Array of environment variables that wi
     value: '0'
     type: 'select'
     options:
-      - 0
-      - 1
-      - 2
+      - '0'
+      - '1'
+      - '2'
     dependencies: []
   - name: Input Labels
     key: LABELS
@@ -51,9 +51,13 @@ envs:                                   # Array of environment variables that wi
     options: []
     dependencies: []
 ports: []
+envPorts: []
 mounts: []
+envMounts: []
+devices: []
+envDevices: []
 tags:                                   # Array of tags.
-  - MQTT Egress
+  - MQTT-Egress
   - output
   - Data
   - egress
