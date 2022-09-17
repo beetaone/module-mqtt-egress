@@ -15,7 +15,7 @@ envs:                                   # Array of environment variables that wi
   - name: MQTT Broker                   # name of the field to be displayed on the UI.
     key: MQTT_BROKER                # key to set in the environment variables.
     description: Broker to publish to.     # Description/helper text for the field.
-    value: mqtt://test.mosquitto.org                         # Value to be set in the environment variables.
+    value: test.mosquitto.org                         # Value to be set in the environment variables.
     type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
     options: []
     dependencies: []
