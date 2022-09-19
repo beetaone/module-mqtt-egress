@@ -7,6 +7,7 @@ Edit this file to implement your module.
 
 import paho.mqtt.client as mqtt
 import json
+import sys
 
 from logging import getLogger
 from .params import PARAMS
@@ -17,8 +18,17 @@ log = getLogger("module")
 client = mqtt.Client()
 
 # connect the client to a remote MQTT broker
-log.debug(f'Connecting to MQTT... Broker: {PARAMS["MQTT_BROKER"]} Port: {PARAMS["PORT"]}')
-client.connect(host=PARAMS['MQTT_BROKER'], port=PARAMS['PORT'])
+__MQTT_BROKER__ = PARAMS['MQTT_BROKER']
+if '://' in __MQTT_BROKER__:
+    protocol = __MQTT_BROKER__.split('://')[0]
+    if protocol != 'mqtt':
+        log.error(f'Unsupported broker URL protocol {protocol}. Please provide URL with mqtt:// protocol.')
+        # kill the process
+        sys.exit(1)
+    else:
+        __MQTT_BROKER__ = __MQTT_BROKER__.replace('mqtt://', '')
+log.debug(f'Connecting to MQTT... Broker: {__MQTT_BROKER__} Port: {PARAMS["PORT"]}')
+client.connect(host=__MQTT_BROKER__, port=PARAMS['PORT'])
 log.debug('Successfully connected to MQTT Broker!')
 
 # define labels for data egressed through MQTT

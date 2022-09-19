@@ -28,7 +28,7 @@ The following module configurations can be provided in a data service designer s
 
 | Name                | Environment Variables | Type    | Description                |
 | ------------------- | --------------------- | ------- | -------------------------- |
-| MQTT Broker Address | MQTT_BROKER           | string  | eg: test.mosquitto.org (you only to supply the broker name/IP address without explicitely stating the protocol like `mqtt://`)   |
+| MQTT Broker Address | MQTT_BROKER           | string  | eg: test.mosquitto.org    |
 | Connection Port     | PORT                  | integer | Port number for the broker |
 | Topic               | TOPIC                 | string  | Topic to publish         |
 | Quality of Service  | QOS                   | integer | Quality of Service         |
