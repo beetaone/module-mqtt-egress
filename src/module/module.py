@@ -18,7 +18,8 @@ client = mqtt.Client()
 
 # connect the client to a remote MQTT broker
 log.debug(f'Connecting to MQTT... Broker: {PARAMS["MQTT_BROKER"]} Port: {PARAMS["PORT"]}')
-client.connect(host=PARAMS['MQTT_BROKER'], port=PARAMS['PORT'])
+__MQTT_BROKER__ = PARAMS['MQTT_BROKER'] if not 'mqtt://' in PARAMS['MQTT_BROKER'] else PARAMS['MQTT_BROKER'].replace('mqtt://', '')
+client.connect(host=__MQTT_BROKER__, port=PARAMS['PORT'])
 log.debug('Successfully connected to MQTT Broker!')
 
 # define labels for data egressed through MQTT
