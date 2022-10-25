@@ -22,7 +22,7 @@ envs:                                   # Array of environment variables that wi
   - name: Port
     key: PORT
     description: Port on which the broker is listening.
-    value: 1883
+    value: "1883"
     type: 'number'
     options: []
     dependencies: []
