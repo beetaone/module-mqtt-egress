@@ -1,15 +1,20 @@
 FROM python:3.8-slim
 
-# copy docker-entrypoint and requirements to initialize multi-stage build
-COPY ./docker/docker-entrypoint.sh ./requirements.txt /app/
+# create app directory to store source code and dependencies
+RUN mkdir /app
 
-# implement multi-stage build to leverage build cache (does not re-install packages when code changes)
-RUN pip install -r /app/requirements.txt
+# copy requirements file to install dependencies
+COPY requirements.txt /app/
+
+# install dependencies
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # copy source code
-COPY ./src /app/src
+COPY src /app/src
+COPY docker/docker-entrypoint.sh /app/
 
+# set the entrypoint for the container
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
-# expose docker container port 80 according to weeve spec
+# expose the port according to the weeve spec
 EXPOSE 80
