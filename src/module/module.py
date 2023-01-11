@@ -49,9 +49,6 @@ def module_main(received_data: any) -> str:
             # successful publishing
             return None
         else:
-            print("Failed to send a message to MQTT topic.")
-            print(rc)
-
             return 'Failed to send a message to MQTT topic.'
 
     except Exception as e:
