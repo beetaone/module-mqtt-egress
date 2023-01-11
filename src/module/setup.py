@@ -32,3 +32,4 @@ def setup_module():
     log.info(f'Connecting to MQTT... Broker: {host} Port: {port}')
     client.connect(host=host, port=port)
     log.info('Successfully connected to MQTT Broker!')
+    client.loop_start()

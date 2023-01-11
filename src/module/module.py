@@ -47,6 +47,11 @@ def module_main(received_data: any) -> str:
         log.debug(f"Data: {return_body}")
 
         # publish data to a remote MQTT broker
+        if not client.is_connected:
+            log.debug("Reconnecting...")
+            client.reconnect()
+            log.debug("Reconnected succesfully")
+
         rc, _ = client.publish(topic=PARAMS['TOPIC'], payload=json.dumps(return_body), qos=PARAMS['QOS'], retain=PARAMS['RETAIN'], properties=properties)
 
         if rc == mqtt.MQTT_ERR_SUCCESS:
