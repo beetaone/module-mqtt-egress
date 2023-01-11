@@ -12,6 +12,7 @@ services:
             MQTT_BROKER: mapi-dev.weeve.engineering
             PORT: 1883
             TOPIC: weeve/factory
+            RETAIN: 'True'
             QOS: 0
             LABELS:
             LOG_LEVEL: DEBUG

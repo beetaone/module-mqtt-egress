@@ -1,7 +1,9 @@
 import paho.mqtt.client as mqtt
+
 from logging import getLogger
 import random
 import string
+
 
 log = getLogger("mqtt_client")
 
@@ -12,7 +14,7 @@ class MqttClient:
     _instance = None
 
     def __init__(self):
-        self.client = mqtt.Client(client_id=client_id)
+        self.client = mqtt.Client(client_id=client_id, clean_session=True)
         self.client.on_connect = self.on_connect
         self.client.on_disconnect = self.on_disconnect
         self.client.on_socket_open = self.on_socket_open

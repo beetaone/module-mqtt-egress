@@ -1,11 +1,11 @@
 # MQTT Egress
 
-|                |                                       |
-| -------------- | ------------------------------------- |
-| Name           | MQTT Egress                           |
-| Version        | v1.0.0                                |
+|           |                                                                               |
+| --------- | ----------------------------------------------------------------------------- |
+| Name      | MQTT Egress                                                                   |
+| Version   | v1.0.0                                                                        |
 | DockerHub | [weevenetwork/mqtt-egress](https://hub.docker.com/r/weevenetwork/mqtt-egress) |
-| authors        | Jakub Grzelak                    |
+| authors   | Jakub Grzelak                                                                 |
 
 - [MQTT Egress](#mqtt-egress)
   - [Description](#description)
@@ -26,12 +26,13 @@ MQTT Egress is an output module responsible for publishing data to a selected MQ
 
 The following module configurations can be provided in a data service designer section on weeve platform:
 
-| Name                | Environment Variables | Type    | Description                |
-| ------------------- | --------------------- | ------- | -------------------------- |
-| MQTT Broker Address | MQTT_BROKER           | string  | eg: test.mosquitto.org    |
-| Connection Port     | PORT                  | integer | Port number for the broker |
-| Topic               | TOPIC                 | string  | Topic to publish         |
-| Quality of Service  | QOS                   | integer | Quality of Service         |
+| Name                | Environment Variables | Type    | Description                                                                                           |
+| ------------------- | --------------------- | ------- | ----------------------------------------------------------------------------------------------------- |
+| MQTT Broker Address | MQTT_BROKER           | string  | eg: test.mosquitto.org                                                                                |
+| Connection Port     | PORT                  | integer | Port number for the broker                                                                            |
+| Topic               | TOPIC                 | string  | Topic to publish                                                                                      |
+| Quality of Service  | QOS                   | integer | Quality of Service                                                                                    |
+| Retain              | RETAIN                | boolean | Retain the message                                                                                    |
 | Input Labels        | LABELS                | string  | List of comma (,) separated labels to read from a previous module. Leave empty ("") to keep all data. |
 
 
@@ -39,12 +40,12 @@ The following module configurations can be provided in a data service designer s
 
 Other features required for establishing the inter-container communication between modules in a data service are set by weeve agent.
 
-| Environment Variables | type   | Description                            |
-| --------------------- | ------ | -------------------------------------- |
-| MODULE_NAME           | string | Name of the module                               |
+| Environment Variables | type   | Description                                    |
+| --------------------- | ------ | ---------------------------------------------- |
+| MODULE_NAME           | string | Name of the module                             |
 | MODULE_TYPE           | string | Type of the module (Input, Processing, Output) |
-| INGRESS_HOST          | string | Host to which data will be ingressed             |
-| INGRESS_PORT          | string | Port to which data will be ingressed             |
+| INGRESS_HOST          | string | Host to which data will be ingressed           |
+| INGRESS_PORT          | string | Port to which data will be ingressed           |
 
 ## Dependencies
 

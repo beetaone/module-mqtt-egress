@@ -10,6 +10,8 @@ import sys
 from logging import getLogger
 
 import paho.mqtt.client as mqtt
+from paho.mqtt.packettypes import PacketTypes
+from paho.mqtt.properties import Properties
 
 from .mqtt_client import MqttClient
 from .params import PARAMS
@@ -19,6 +21,8 @@ log = getLogger("module")
 mqtt_client = MqttClient.get_instance()
 client = mqtt_client.client
 
+properties = Properties(PacketTypes.PUBLISH)
+properties.MessageExpiryInterval = 30  # in seconds
 
 # define labels for data egressed through MQTT
 LABELS = PARAMS.get('LABELS', '').strip().split(',') if PARAMS.get('LABELS', '') else None
@@ -43,7 +47,7 @@ def module_main(received_data: any) -> str:
         log.debug(f"Data: {return_body}")
 
         # publish data to a remote MQTT broker
-        rc, _ = client.publish(topic=PARAMS['TOPIC'], payload=json.dumps(return_body), qos=PARAMS['QOS'])
+        rc, _ = client.publish(topic=PARAMS['TOPIC'], payload=json.dumps(return_body), qos=PARAMS['QOS'], retain=PARAMS['RETAIN'], properties=properties)
 
         if rc == mqtt.MQTT_ERR_SUCCESS:
             log.debug("Data sent successfully.")
