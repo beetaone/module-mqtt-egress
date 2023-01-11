@@ -46,10 +46,10 @@ def module_main(received_data: any) -> str:
         rc, _ = client.publish(topic=PARAMS['TOPIC'], payload=json.dumps(return_body), qos=PARAMS['QOS'])
 
         if rc == mqtt.MQTT_ERR_SUCCESS:
-            # successful publishing
+            log.debug("Data sent successfully.")
             return None
         else:
-            return 'Failed to send a message to MQTT topic.'
+            return f"Failed to send a message to MQTT topic. Return code: {rc}"
 
     except Exception as e:
         return f"Exception in the module business logic: {e}"
