@@ -56,7 +56,7 @@ def request_handler():
             log.error(f"Failed to invoke a thread to process new data. {e}")
 
         # notify previous module that data has been received
-        return "OK - data accepted"
+        return "OK - data accepted\n"
 
     except Exception as e:
         response.status = 400

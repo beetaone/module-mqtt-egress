@@ -7,8 +7,11 @@ from logging import getLogger
 from bottle import run
 from api import setup_logging
 
+from module.setup import setup_module
+
 setup_logging()
 log = getLogger("main")
+
 
 def main():
     log.info(
@@ -18,12 +21,14 @@ def main():
         getenv("INGRESS_PORT"),
     )
 
+    setup_module()
     # start the server
     run(
         host=getenv("INGRESS_HOST"),
         port=getenv("INGRESS_PORT"),
         quiet=True,
     )
+
 
 if __name__ == "__main__":
     main()

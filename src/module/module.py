@@ -5,49 +5,21 @@ Data outputting should happen here.
 Edit this file to implement your module.
 """
 
-import paho.mqtt.client as mqtt
 import json
 import sys
-
 from logging import getLogger
+
+import paho.mqtt.client as mqtt
+
+from .mqtt_client import MqttClient
 from .params import PARAMS
 
 log = getLogger("module")
 
-client = mqtt.Client()
-
-# extract the protocol and host from the MQTT broker URL
-__MQTT_BROKER__ = PARAMS['MQTT_BROKER']
-if '://' in __MQTT_BROKER__:
-    protocol, host = __MQTT_BROKER__.split('://')
-else:
-    protocol, host = "mqtt", __MQTT_BROKER__
+mqtt_client = MqttClient.get_instance()
+client = mqtt_client.client
 
 
-log.debug(f'Protocol: {protocol} Host: {host}')
-
-# check if the protocol is supported
-supported_protocols = ['mqtt', 'ws']
-if protocol not in supported_protocols:
-    log.error(f'Unsupported broker URL protocol {protocol}. Please provide URL with a supported protocol: {supported_protocols}')
-    sys.exit(1)
-
-# set the protocol to use for the connection based on the provided protocol
-if protocol == 'ws':
-    client.ws_set()
-
-# extract the port from the PARAMS dictionary
-port = PARAMS['PORT']
-
-# connect the client to the MQTT broker
-log.info(f'Connecting to MQTT... Broker: {host} Port: {port}')
-client.connect(host=host, port=port)
-
-# log a success message
-log.info('Successfully connected to MQTT Broker!')
-
-
-# define labels for data egressed through MQTT
 # define labels for data egressed through MQTT
 LABELS = PARAMS.get('LABELS', '').strip().split(',') if PARAMS.get('LABELS', '') else None
 
@@ -77,6 +49,9 @@ def module_main(received_data: any) -> str:
             # successful publishing
             return None
         else:
+            print("Failed to send a message to MQTT topic.")
+            print(rc)
+
             return 'Failed to send a message to MQTT topic.'
 
     except Exception as e:
