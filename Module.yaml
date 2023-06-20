@@ -1,63 +1,63 @@
-displayName: "MQTT Egress" # Display name for the module that will be displayed in the UI.
-moduleName: "mqtt-egress" # Module name that will be used to reference the module, and uniquely identify the module and their versions.
-description: "Send data to a remote MQTT broker." # Module description that will be displayed in the UI.
-versionName: "v1.0.0" # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
-isPublic: true # Boolean value that indicates if the module is Public or Private.
+displayName: 'MQTT Egress (Data Typing)' # Display name for the module that will be displayed in the UI.
+moduleName: 'mqtt-egress-data-typing' # Module name that will be used to reference the module, and uniquely identify the module and their versions.
+description: 'Send data to a remote MQTT broker.' # Module description that will be displayed in the UI.
+versionName: 'v1.0.0' # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
+isPublic: false # Boolean value that indicates if the module is Public or Private.
 categories: # Array of category that will be used to group the module in the UI.
-    - "Egress"
-type: "Output" # Module type (Input, Processing, Output) that will be used to group the module in the UI.
+  - 'Egress'
+type: 'Output' # Module type (Input, Processing, Output) that will be used to group the module in the UI.
 image:
-    name: "weevenetwork/mqtt-egress" # Image name from the docker registry.
-    tag: "v1.0.0" # Image tag from the docker registry.
-    homepage: "https://hub.docker.com/r/weevenetwork/mqtt-egress" # Image homepage from the docker registry.
-repository: "https://github.com/weeve-modules/mqtt-egress" # Repository URL to source code.
+  name: 'weevenetwork/mqtt-egress' # Image name from the docker registry.
+  tag: 'v1.0.0' # Image tag from the docker registry.
+  homepage: 'https://hub.docker.com/r/weevenetwork/mqtt-egress' # Image homepage from the docker registry.
+repository: 'https://github.com/weeve-modules/mqtt-egress' # Repository URL to source code.
 envs: # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
-    - name: MQTT Broker # name of the field to be displayed on the UI.
-      key: MQTT_BROKER # key to set in the environment variables.
-      description: Broker to publish to. # Description/helper text for the field.
-      value: test.mosquitto.org # Value to be set in the environment variables.
-      type: "text" # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
-      options: []
-      dependencies: []
-    - name: Port
-      key: PORT
-      description: Port on which the broker is listening.
-      value: "1883"
-      type: "number"
-      options: []
-      dependencies: []
-    - name: Topic
-      key: TOPIC
-      description: Topic to publish.
-      value: "weeve/factory"
-      type: "text"
-      options: []
-      dependencies: []
-    - name: QOS
-      key: QOS
-      description: Quality of service for the connection.
-      value: "0"
-      type: "select"
-      options:
-          - "0"
-          - "1"
-          - "2"
-    - name: Retain
-      key: RETAIN
-      description: Retain flag for the connection.
-      value: "False"
-      type: "select"
-      options:
-          - "True"
-          - "False"
-      dependencies: []
-    - name: Input Labels
-      key: LABELS
-      description: List of comma (,) separated labels to read from a previous module. Leave empty ("") to keep all data.
-      value: ""
-      type: "text"
-      options: []
-      dependencies: []
+  - name: MQTT Broker # name of the field to be displayed on the UI.
+    key: MQTT_BROKER # key to set in the environment variables.
+    description: Broker to publish to. # Description/helper text for the field.
+    value: test.mosquitto.org # Value to be set in the environment variables.
+    type: 'text' # Type of the field. Possible values are: ['input', 'output', 'text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
+    options: []
+    dependencies: []
+  - name: Port
+    key: PORT
+    description: Port on which the broker is listening.
+    value: '1883'
+    type: 'number'
+    options: []
+    dependencies: []
+  - name: Topic
+    key: TOPIC
+    description: Topic to publish.
+    value: 'weeve/factory'
+    type: 'text'
+    options: []
+    dependencies: []
+  - name: QOS
+    key: QOS
+    description: Quality of service for the connection.
+    value: '0'
+    type: 'select'
+    options:
+      - '0'
+      - '1'
+      - '2'
+  - name: Retain
+    key: RETAIN
+    description: Retain flag for the connection.
+    value: 'False'
+    type: 'select'
+    options:
+      - 'True'
+      - 'False'
+    dependencies: []
+  - name: Input Labels
+    key: LABELS
+    description: List of comma (,) separated labels to read from a previous module. Leave empty ('') to keep all data.
+    value: ''
+    type: 'input'
+    options: []
+    dependencies: []
 ports: []
 envPorts: []
 mounts: []
@@ -65,9 +65,9 @@ envMounts: []
 devices: []
 envDevices: []
 tags: # Array of tags.
-    - MQTT-Egress
-    - output
-    - Data
-    - egress
-    - MQTT
-icon: "https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_mqtt_output.png" # Icon URL that will be displayed in the UI.
+  - MQTT-Egress
+  - output
+  - Data
+  - egress
+  - MQTT
+icon: 'https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_mqtt_output.png' # Icon URL that will be displayed in the UI.
