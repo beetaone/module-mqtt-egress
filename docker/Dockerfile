@@ -16,5 +16,5 @@ COPY docker/docker-entrypoint.sh /app/
 # set the entrypoint for the container
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
-# expose the port according to the weeve spec
+# expose the port according to the beetaone spec
 EXPOSE 80

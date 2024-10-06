@@ -4,14 +4,14 @@
 | --------- | ----------------------------------------------------------------------------- |
 | Name      | MQTT Egress                                                                   |
 | Version   | v1.0.0                                                                        |
-| DockerHub | [weevenetwork/mqtt-egress](https://hub.docker.com/r/weevenetwork/mqtt-egress) |
+| DockerHub | [beetaone/mqtt-egress](https://hub.docker.com/r/beetaone/mqtt-egress) |
 | authors   | Jakub Grzelak                                                                 |
 
 - [MQTT Egress](#mqtt-egress)
   - [Description](#description)
   - [Environment Variables](#environment-variables)
     - [Module Specific](#module-specific)
-    - [Set by the weeve Agent on the edge-node](#set-by-the-weeve-agent-on-the-edge-node)
+    - [Set by the beetaone Agent on the edge-node](#set-by-the-beetaone-agent-on-the-edge-node)
   - [Dependencies](#dependencies)
   - [Input](#input)
   - [Output](#output)
@@ -24,7 +24,7 @@ MQTT Egress is an output module responsible for publishing data to a selected MQ
 
 ### Module Specific
 
-The following module configurations can be provided in a data service designer section on weeve platform:
+The following module configurations can be provided in a data service designer section on beetaone platform:
 
 | Name                | Environment Variables | Type    | Description                                                                                           |
 | ------------------- | --------------------- | ------- | ----------------------------------------------------------------------------------------------------- |
@@ -36,9 +36,9 @@ The following module configurations can be provided in a data service designer s
 | Input Labels        | LABELS                | string  | List of comma (,) separated labels to read from a previous module. Leave empty ("") to keep all data. |
 
 
-### Set by the weeve Agent on the edge-node
+### Set by the beetaone Agent on the edge-node
 
-Other features required for establishing the inter-container communication between modules in a data service are set by weeve agent.
+Other features required for establishing the inter-container communication between modules in a data service are set by beetaone agent.
 
 | Environment Variables | type   | Description                                    |
 | --------------------- | ------ | ---------------------------------------------- |
